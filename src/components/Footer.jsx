@@ -3,10 +3,13 @@ import avatar1 from '../assets/avatar1.jpg'
 import { quotes } from '../constants'
 const Footer = () => {
   return (
-    <section id='footer' className='flex sm:flex-row flex-col justify-center sm:items-start items-center mt-[180px] bg-[#222325] py-[120px] w-full gap-[48px]'>     
+    <section id='footer' className='relative z-40 flex sm:flex-row flex-col justify-center sm:items-start items-center sm:mt-[180px] mt-[80px] bg-[#222325] sm:py-[120px] py-[80px] w-full gap-[48px]'>     
         {
             quotes.map((quote, index) => (
-                <div key={quote.id} className={`sm:${index === quotes.length - 1 ? 'block' : 'hidden'}`}>
+                <div key={quote.id} 
+                className=
+                {`sm:${index != quotes.length - 1 ? 'block hidden' : 'hidden block'}`}
+                >
                     <div className='flex flex-col justify-start gap-[24px]'>
                         <p className='text-zinc-300 font-inter text-[32px] font-normal leading-[41px] max-w-[340px]'>
                             {quote.quote}    

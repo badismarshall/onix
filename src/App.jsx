@@ -11,16 +11,20 @@ import Blog from './components/Blog'
 import Footer from './components/Footer'
 import hero22 from './assets/hero22.png' 
 import Getinvolved from './components/Getinvolved'
+import FooterC from './components/FooterC'
+
 const App = () =>  (
+  <>
+  <Navbar />
     <div className='bg-primary w-full overflow-hidden'>
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
-        <img 
+        {/* <img 
                 src={hero}
                 alt='hero'
                 className='w-[100%] h-[100%] object-contain z-[0] absolute top-0 left-0'
-            />
-          <Navbar />
+            /> */}
+
           <Hero />
           <Features />
           <Valueprops />
@@ -29,6 +33,7 @@ const App = () =>  (
           <Blog />
           <Footer />
           <Getinvolved />
+          <FooterC />
         </div>
         {/* <img 
             src={hero22}
@@ -37,7 +42,7 @@ const App = () =>  (
           /> */}
       </div>
     </div>
-    
+    </>
   )
 
 

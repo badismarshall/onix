@@ -1,12 +1,34 @@
+import React, { useEffect, useRef } from 'react'
 import stick from '../assets/Stick6.svg'
 import stick2 from '../assets/Stick7.svg'
+import { useInView, motion, useAnimation } from 'framer-motion'
+import { slideIn } from "../utils/motion";
 
 const Valueprops = () => {
+  const stickref = useRef(null)
+  const stick2ref = useRef(null)
+  const inView = useInView(stickref, {once : true})
+  const inView2 = useInView(stick2ref, {once : true})
+
+  const sitckyControls2 = useAnimation()
+  const sitckyControls = useAnimation()
+  useEffect(() => {
+    if(inView){
+      sitckyControls.start('show')
+    }
+    if(inView2){
+      sitckyControls2.start('show')
+    }
+  }, [inView, inView2])
+
   return (
     <section id='valueprop' className='flex flex-col items-center justify-start sm:mt-[180px] mt-[80px]'>
-      <div className='flex sm:flex-row flex-col justify-center'>
+      <div className='flex sm:flex-row flex-col justify-start '>
         <div className='flex flex-col justify-center'>
-            <h4 className='text-zinc-300 max-w-[578px] font-inter sm:text-6xl text-[40px] font-normal sm:leading-[72px] leading-[48px]'>
+            <h4 className='text-zinc-300 max-w-[578px] font-inter font-normal
+            text-[40px] xs:text-[48px] sm:text-[60px]
+            leading-[48px] xs:leading-[60px] sm:leading-[72px]
+            tracking-[-0.8px] xs:tracking-[-0.96px] sm:tracking-[-1.2px]'>
               Built by developers, <br />for developers.
             </h4>
             <p className='max-w-[578px] font-karla text-[24px] leading-[36px] font-normal text-zinc-500 mt-[32px]'>
@@ -50,20 +72,46 @@ const Valueprops = () => {
               <div className="text-fuchsia-500 text-lg font-normal leading-[27px] font-karla">Read the docs</div>
             </div>
         </div>
-        <img 
-          src={stick}
-          alt='stick'
-          className='w-[712px] h-[712px]  object-contain sm:block hidden'
-        />
+        <motion.div 
+            ref={stickref} 
+            variants={slideIn("right", "tween", 0.2, 1)}
+            initial='hidden'
+            animate={sitckyControls}
+            className='relative max-ss:left-[50px] left-[0px]'
+        >
+          <img 
+            src={stick}
+            alt='stick'
+            className='w-[712px] h-[712px] max-ss:scale-[150%] object-contain sm:block hidden'
+          />
+        </motion.div>
       </div>
-      <div className='flex sm:flex-row flex-col justify-center items-center mt-[80px]'>
-        <img
-          src={stick2}
-          alt='stick'
-          className='w-[712px] h-[682px] mb-[100px] object-contain sm:block hidden'
-        />
+      <div className='flex sm:flex-row flex-col justify-end items-center mt-[80px]'>
+      {/* <div ref={stick2ref} className='delay-300 duration-700 slide-in-from-left-96 hidden'>
+          <img
+            src={stick2}
+            alt='stick'
+            className='w-[712px] h-[682px] mb-[100px] object-contain sm:block hidden'
+          />
+        </div> */}
+        <motion.div 
+            ref={stick2ref} 
+            variants={slideIn("left", "tween", 0.2, 1)}
+            initial='hidden'
+            animate={sitckyControls2}
+            className='relative max-ss:right-[50px] right-[0px]'
+        >
+          <img
+              src={stick2}
+              alt='stick'
+              className='w-[712px] h-[682px] mb-[100px] max-ss:scale-[150%] object-contain sm:block hidden'
+          />
+        </motion.div>
         <div className='flex flex-col'>
-          <h4 className='text-zinc-300 max-w-[578px] font-inter sm:text-6xl text-[40px] font-normal sm:leading-[72px] leading-[48px]'>
+          <h4 className='text-zinc-300 max-w-[578px] font-inter font-normal
+            text-[40px] xs:text-[48px] sm:text-[60px]
+            leading-[48px] xs:leading-[60px] sm:leading-[72px]
+            tracking-[-0.8px] xs:tracking-[-0.96px] sm:tracking-[-1.2px]'>
             Top blockchains <br/>build on Onix.
           </h4>
           <p className='max-w-[578px] font-karla text-[24px] leading-[36px] font-normal text-zinc-500 mt-[32px]'>

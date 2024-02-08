@@ -17,15 +17,16 @@ module.exports = {
       },
       background:{
         hero: "url('/src/assets/heroimages.png')",
+        "foterImage": "url('/src/assets/foterimage.svg')",
+      },
+      screens: {
+        xs: "375px",
+        sm: "768px",
+        ss: "1024px",
+        md: "1200px",
+        lg: "1440px",
+        xl: "1600px",
       }
-    },
-    screens: {
-      xs: "375px",
-      sm: "768px",
-      ss: "1024px",
-      md: "1200px",
-      lg: "1440px",
-      xl: "1600px",
     },
   },
   plugins: [],
